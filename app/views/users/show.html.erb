@@ -1,0 +1,14 @@
+<h2>Your Hosted Events</h2>
+<p>
+  <% if @events.nil? %>
+      You haven't created any events yet!
+  <% else %>  
+    <% @events.each do |event| %>
+      <p>
+        <h3><%= link_to event.title, event_path(event) %></h3>
+        <%= event.date %>, <%= event.location %> 
+        <%= event.body %>
+      <p>
+    <% end %>  
+  <% end %>
+</p>
