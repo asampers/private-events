@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def show
-    @hosted_events = current_user.events.all
+    @events = current_user.events.all
   end
 
 end

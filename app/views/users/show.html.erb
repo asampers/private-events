@@ -4,11 +4,9 @@
       You haven't created any events yet!
   <% else %>  
     <% @events.each do |event| %>
-      <p>
         <h3><%= link_to event.title, event_path(event) %></h3>
-        <%= event.date %>, <%= event.location %> 
-        <%= event.body %>
-      <p>
+      <p>  <%= event.date %>, <%= event.location %> </p>
+      <p>  <%= event.body %> </p>
     <% end %>  
   <% end %>
 </p>

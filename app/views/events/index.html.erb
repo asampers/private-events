@@ -3,6 +3,5 @@
   <% @events.each do |event| %>
     <h3> <%= event.title %> </h3>
     <p> <%= event.body %> </p>
-    <p> <%= event.date %> </p>
-    <p> <%= event.location %> </p>
+    <p> <%= event.date %>, <%= event.location %> </p>
   <% end %>  
