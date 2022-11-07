@@ -13,7 +13,8 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
 
     if @event.save
-      redirect_to :root, notice: "Event was successfully created."
+      flash.notice = "#{@event.title} was successfully created."
+      redirect_to :root
     else 
       render :new, status: :unprocessable_entity
     end    

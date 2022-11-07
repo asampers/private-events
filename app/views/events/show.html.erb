@@ -1,0 +1,10 @@
+<h2> <%= @event.title %> </h2>
+
+<p>
+  <strong>Event date:</strong> <%= @event.date %><br>
+  <strong>Event location:</strong> <%= @event.location %><br>
+  <strong>Event description:</strong> <%= @event.body %><br>
+  <strong>Hosted by:</strong> <%= @event.creator.name %><br>
+</p>  
+
+<%= link_to '<-- Back', root_path %>
