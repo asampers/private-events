@@ -10,4 +10,5 @@ Rails.application.routes.draw do
    get '/users/:id', to: 'users#show', as: 'user' 
 
    resources :events
+   resources :invites
 end
