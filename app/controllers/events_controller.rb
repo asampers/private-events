@@ -1,8 +1,10 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: %i[show]
   before_action :authenticate_user!, except: %i[show index]
 
   def index
-    @events = Event.all
+    @past_events = Event.includes(:creator).past
+    @upcoming_events = Event.includes(:creator).upcoming
   end
 
   def new
@@ -22,9 +24,15 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @current_guests = @event.attendees.all
   end
 
   private
+
+  def set_event
+      @event = Event.find(params[:id])
+    end
+
   def event_params
     params.require(:event).permit(:title, :body, :date, :location )
   end

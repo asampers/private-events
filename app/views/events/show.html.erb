@@ -6,7 +6,7 @@
   <strong>Event description:</strong> <%= @event.body %><br>
   <strong>Hosted by:</strong> <%= @event.creator.name %><br>
 
-  <% unless @current_guests.nil? %>
+  <% unless @current_guests[0].nil? %>
     <strong>Current guests: </strong>
     <ul>
     <% @current_guests.each do |guest| %>
@@ -18,9 +18,8 @@
     <% if @event.attendees.include?(current_user) %>
       You've already joined this event! 
     <% else %>
-      <%= render 'invitation_form' %>
+      <%= render 'invitation_process' %>
     <% end %>
 
 </p>  
-
-<%= link_to '<-- Back', root_path %>
+<%= link_to '<-- Back', 'javascript:history.back()' %>

@@ -1,12 +1,32 @@
 <h2>Your Hosted Events</h2>
 <p>
-  <% if @events.nil? %>
+  <% if @hosted_events.nil? %>
       You haven't created any events yet!
   <% else %>  
-    <% @events.each do |event| %>
+    <% @hosted_events.each do |event| %>
         <h3><%= link_to event.title, event_path(event) %></h3>
       <p>  <%= event.date %>, <%= event.location %> </p>
       <p>  <%= event.body %> </p>
     <% end %>  
   <% end %>
 </p>
+
+<h2>Future Events to Attend</h2>
+<p>
+  <% if @attend_events.nil? %>
+      You aren't going to any events yet!
+  <% else %>  
+    <% @attend_events.upcoming.each do |event| %>
+        <h3><%= link_to event.title, event_path(event) %></h3>
+    <% end %>  
+  <% end %>
+</p>
+
+<h2>Past Events You've Attended</h2>
+<p> 
+    <% @attend_events.past.each do |event| %>
+        <h3><%= link_to event.title, event_path(event) %></h3> 
+  <% end %>
+</p>
+
+<%= link_to '<-- Back', root_path %>
