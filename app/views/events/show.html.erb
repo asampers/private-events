@@ -5,6 +5,22 @@
   <strong>Event location:</strong> <%= @event.location %><br>
   <strong>Event description:</strong> <%= @event.body %><br>
   <strong>Hosted by:</strong> <%= @event.creator.name %><br>
+
+  <% unless @current_guests.nil? %>
+    <strong>Current guests: </strong>
+    <ul>
+    <% @current_guests.each do |guest| %>
+      <li><%= guest.name %></li>
+    <% end %>
+    </ul><br>
+  <% end %>
+  
+    <% if @event.attendees.include?(current_user) %>
+      You've already joined this event! 
+    <% else %>
+      <%= render 'invitation_form' %>
+    <% end %>
+
 </p>  
 
 <%= link_to '<-- Back', root_path %>
