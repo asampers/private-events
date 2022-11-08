@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show]
   before_action :authenticate_user!, except: %i[show index]
 
   def index
@@ -28,11 +27,7 @@ class EventsController < ApplicationController
   end
 
   private
-
-  def set_event
-      @event = Event.find(params[:id])
-    end
-
+  
   def event_params
     params.require(:event).permit(:title, :body, :date, :location )
   end
